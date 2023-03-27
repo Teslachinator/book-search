@@ -1,8 +1,8 @@
 import "./App.css";
-// import Header from "./components/Header";
+import Header from "./components/Header";
 import axios from "axios";
 import { useState } from "react";
-import Card from "./components/Card";
+import Card from "./components/card/Card";
 // import { Provider } from "react-redux";
 // import store from "./helpers/store";
 
@@ -16,8 +16,7 @@ function App() {
   const getSearchData = () => {
     axios
       .get(
-        `${BASE_URL}q=${search}+${category}&orderBy=${sort}&maxResults=40&langRestrict=ru&key=${KEY}`
-        // `${BASE_URL}q=flowers+inauthor:keyes&key=${KEY}`
+        `${BASE_URL}q=${search}+${category}&orderBy=${sort}&maxResults=10&langRestrict=ru&key=${KEY}`
       )
       .then((res) => {
         setBooks(res.data.items);
@@ -26,20 +25,26 @@ function App() {
   };
   console.log(
     books,
+    // books.searchInfo.textSnippet,
     `${BASE_URL}q=${search}+${category}&orderBy=${sort}&key=${KEY}`,
     category,
     sort
   );
 
-  // const sSort = (e) => setSort(e);
-  // const sCategory = (e) => setCategory(e);
-  // const sSearch = (e) => setSearch(e);
+  const sSort = (e) => setSort(e);
+  const sCategory = (e) => setCategory(e);
+  const sSearch = (e) => setSearch(e);
 
   return (
     // <Provider store={store}>
     <div className="App">
-      {/* <Header sSort={sSort} sSearch={sSearch} sCategory={sCategory} /> */}
-      <header>
+      <Header
+        sSort={sSort}
+        sSearch={sSearch}
+        sCategory={sCategory}
+        data={() => getSearchData()}
+      />
+      {/* <header>
         <div className="container">
           <h1 className="header__title">Поиск книг</h1>
           <div className="header__search input-group mb-3">
@@ -89,7 +94,7 @@ function App() {
             </div>
           </div>
         </div>
-      </header>
+      </header> */}
       <main className="container-fluid">
         <section className="row row-cols-2 gap-3">
           {books.map((book) => {

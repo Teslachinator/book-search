@@ -1,0 +1,36 @@
+.cardWidth {
+  display: flex;
+  /* flex-direction: row; */
+  min-width: 300px;
+  max-width: 20%;
+}
+
+.description {
+  max-height: 500px;
+  overflow: hidden;
+  margin: 0;
+}
+.card-img-top {
+  max-height: 300px;
+}
+
+.card {
+}
+.card__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  gap: 20px;
+}
+.card__title {
+  height: 50px;
+  overflow: hidden;
+}
+.categories {
+}
+.authors {
+  position: relative;
+  padding-bottom: 20px;
+}
