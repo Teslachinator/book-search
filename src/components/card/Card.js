@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Modal from "../modal/Modal";
 import Popup from "../modal/Popap";
 import "./card.css";
 
@@ -15,7 +14,6 @@ const Card = ({ book }) => {
       : "...";
 
   const authors = book.volumeInfo.authors;
-
   return (
     <>
       <Popup
@@ -29,27 +27,45 @@ const Card = ({ book }) => {
         authors={authors}
         id={id}
       >
-        <div className="" id={id}>
-          <div className="">
-            <p className="title">{title}</p>
-            <img className="card-img-top" src={thumbnail} alt="" />
-            <p className="autors">Авторы: {authors}</p>
-            <p className="categories">Категория: {categories}</p>
-            <p className="description">{description}</p>
-            <a className="info" href={book.volumeInfo.infoLink}>
-              Узнать подробнее
-            </a>
-            <p className="language">Язык: {book.volumeInfo.language}</p>
-            <p className="pageCount">
-              Количество страниц: {book.volumeInfo.pageCount}
-            </p>
-            <p className="publishedDate">
-              Дата публикации: {book.volumeInfo.publishedDate}
-            </p>
-            <p className="publisher">
-              Издательство: {book.volumeInfo.publisher}
-            </p>
+        <div className="popupCard" id={id}>
+          <div className="close" onClick={() => setPopupActive(false)}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="40"
+              viewBox="0 96 960 960"
+              width="40"
+            >
+              <path d="m251.333 857.71-53.043-53.043L426.957 576 198.29 347.333l53.043-53.043L480 522.957 708.667 294.29l53.043 53.043L533.043 576 761.71 804.667l-53.043 53.043L480 629.043 251.333 857.71Z" />
+            </svg>
           </div>
+          <div className="popupCard__header">
+            <img className="popupCard-img" src={thumbnail} alt="" />
+            <div>
+              <p className="title h2">{title}</p>
+              <p className="autors">Авторы: {authors}</p>
+              <p className="categories">Категория: {categories}</p>
+              <a
+                className="info btn btn-info"
+                href={book.volumeInfo.previewLink}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Предпросмотр
+              </a>
+            </div>
+          </div>
+          <p className="line"></p>
+          <div className="popupCard__main">
+            <p className="description">{description}</p>
+          </div>{" "}
+          <p className="pageCount">
+            Количество страниц: {book.volumeInfo.pageCount}
+          </p>
+          <p className="publishedDate">
+            Дата публикации: {book.volumeInfo.publishedDate}
+          </p>
+          <p className="publisher">Издательство: {book.volumeInfo.publisher}</p>
+          <p className="language">Язык: {book.volumeInfo.language}</p>
         </div>
       </Popup>
       <article

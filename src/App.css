@@ -21,16 +21,6 @@ section {
   display: flex;
   justify-content: center;
 }
-.card:hover {
-  box-shadow: 5px 5px 16px rgba(8, 7, 7, 0.429);
-}
-.card {
-  box-shadow: 2px 5px 10px rgba(8, 7, 7, 0.401);
-}
-article {
-  cursor: pointer;
-  padding: 20px;
-}
 .container {
   display: flex;
   align-items: center;

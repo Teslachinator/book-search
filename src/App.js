@@ -36,7 +36,6 @@ function App() {
   const sSearch = (e) => setSearch(e);
 
   return (
-    // <Provider store={store}>
     <div className="App">
       <Header
         sSort={sSort}
@@ -44,57 +43,6 @@ function App() {
         sCategory={sCategory}
         data={() => getSearchData()}
       />
-      {/* <header>
-        <div className="container">
-          <h1 className="header__title">Поиск книг</h1>
-          <div className="header__search input-group mb-3">
-            <input
-              className="form-control"
-              type="text"
-              onChange={(e) => setSearch(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  getSearchData();
-                }
-              }}
-            />
-            <button onClick={() => getSearchData()} className="btn btn-primary">
-              search
-            </button>
-          </div>
-          <div className="header__filter container ">
-            <div>
-              <p>Категории</p>
-              <select
-                className="form-select"
-                onChange={(e) => setCategory(e.target.value)}
-              >
-                <option value="" defaultValue>
-                  Все
-                </option>
-                <option value="subject:art">Арт</option>
-                <option value="subject:biography">Биография</option>
-                <option value="subject:computers">Компьютеры</option>
-                <option value="subject:history">История</option>
-                <option value="subject:medical">Медицина</option>
-                <option value="subject:poetry">Поэзия</option>
-              </select>
-            </div>
-            <div>
-              <p>Сортировать по</p>
-              <select
-                className="form-select"
-                onChange={(e) => setSort(e.target.value)}
-              >
-                <option value="relevance" defaultValue>
-                  По релевантности
-                </option>
-                <option value="newest">Сначала новые</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </header> */}
       <main className="container-fluid">
         <section className="row row-cols-2 gap-3">
           {books.map((book) => {
@@ -103,7 +51,6 @@ function App() {
         </section>
       </main>
     </div>
-    // </Provider>
   );
 }
 

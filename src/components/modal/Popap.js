@@ -1,18 +1,7 @@
-import React, { Children } from "react";
+import React from "react";
 import "./popup.css";
 
-const Popup = ({
-  book,
-  active,
-  setActive,
-  thumbnail,
-  categories,
-  title,
-  description,
-  authors,
-  id,
-  children,
-}) => {
+const Popup = ({ active, setActive, children }) => {
   return (
     <div
       className={active ? "popup_bg popActive" : "popup_bg"}
