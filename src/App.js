@@ -16,7 +16,7 @@ function App() {
   const getSearchData = () => {
     axios
       .get(
-        `${BASE_URL}q=${search}+${category}&orderBy=${sort}&maxResults=10&langRestrict=ru&key=${API_KEY}`
+        `${BASE_URL}q=${search}+${category}&orderBy=${sort}&maxResults=40&langRestrict=ru&key=${API_KEY}`
       )
       .then((res) => {
         setBooks(res.data.items);
