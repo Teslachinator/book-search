@@ -1,13 +1,13 @@
 import "./App.css";
 import Header from "./components/Header";
 import axios from "axios";
+import API_KEY from "./token.js";
 import { useState } from "react";
 import Card from "./components/card/Card";
 // import { Provider } from "react-redux";
 // import store from "./helpers/store";
 
 function App() {
-  const KEY = "AIzaSyBQAd9SEszXHXvKruUmFFWA7P7Je9fcd2U";
   const BASE_URL = "https://www.googleapis.com/books/v1/volumes?";
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState("relevance");
@@ -16,7 +16,7 @@ function App() {
   const getSearchData = () => {
     axios
       .get(
-        `${BASE_URL}q=${search}+${category}&orderBy=${sort}&maxResults=10&langRestrict=ru&key=${KEY}`
+        `${BASE_URL}q=${search}+${category}&orderBy=${sort}&maxResults=10&langRestrict=ru&key=${API_KEY}`
       )
       .then((res) => {
         setBooks(res.data.items);
@@ -26,7 +26,7 @@ function App() {
   console.log(
     books,
     // books.searchInfo.textSnippet,
-    `${BASE_URL}q=${search}+${category}&orderBy=${sort}&key=${KEY}`,
+    `${BASE_URL}q=${search}+${category}&orderBy=${sort}&key=${API_KEY}`,
     category,
     sort
   );
