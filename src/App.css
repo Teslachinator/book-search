@@ -8,9 +8,23 @@
 header {
   width: 100%;
   padding-bottom: 50px;
-  background: linear-gradient(0deg, #5098c8 0%, #62a5c4 100%);
-
+  background: linear-gradient(90deg, #d44789 0%, #0d70a9 100%);
+  font-family: "Russo One", sans-serif;
+  background-size: 400% 400%;
+  animation: bgHeader 10s infinite linear;
   justify-content: center;
+  color: rgb(15, 14, 14);
+}
+@keyframes bgHeader {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
 }
 main {
   margin: 50px 0;
@@ -27,7 +41,8 @@ section {
   flex-direction: column;
 }
 .header__title {
-  margin: 50px;
+  font-size: 60px;
+  margin: 30px;
 }
 .header__search {
   display: flex;

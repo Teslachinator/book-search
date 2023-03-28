@@ -5,30 +5,25 @@ import "./card.css";
 const Card = ({ book }) => {
   const [popupActive, setPopupActive] = useState(false);
   const id = book.id;
-  const thumbnail = book.volumeInfo.imageLinks.thumbnail;
+
+  let imgImg =
+    book.volumeInfo.imageLinks && book.volumeInfo.imageLinks.smallThumbnail;
   const categories = book.volumeInfo.categories;
   const title = book.volumeInfo.title;
   const description =
     book.volumeInfo.description !== undefined
       ? book.volumeInfo.description
       : "...";
-
+  console.log(book.volumeInfo.imageLinks);
   const authors = book.volumeInfo.authors;
   return (
     <>
-      <Popup
-        active={popupActive}
-        setActive={setPopupActive}
-        book={book}
-        thumbnail={thumbnail}
-        categories={categories}
-        title={title}
-        description={description}
-        authors={authors}
-        id={id}
-      >
+      <Popup active={popupActive} setActive={setPopupActive}>
         <div className="popupCard" id={id}>
-          <div className="close" onClick={() => setPopupActive(false)}>
+          <div
+            className="popupCard__close"
+            onClick={() => setPopupActive(false)}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="40"
@@ -39,10 +34,10 @@ const Card = ({ book }) => {
             </svg>
           </div>
           <div className="popupCard__header">
-            <img className="popupCard-img" src={thumbnail} alt="" />
+            <img className="popupCard-img" src={imgImg} alt="#" />
             <div>
               <p className="title h2">{title}</p>
-              <p className="autors">Авторы: {authors}</p>
+              <p className="autors">Авторы: {`${authors}`}</p>
               <p className="categories">Категория: {categories}</p>
               <a
                 className="info btn btn-info"
@@ -57,15 +52,18 @@ const Card = ({ book }) => {
           <p className="line"></p>
           <div className="popupCard__main">
             <p className="description">{description}</p>
-          </div>{" "}
-          <p className="pageCount">
-            Количество страниц: {book.volumeInfo.pageCount}
-          </p>
-          <p className="publishedDate">
-            Дата публикации: {book.volumeInfo.publishedDate}
-          </p>
-          <p className="publisher">Издательство: {book.volumeInfo.publisher}</p>
-          <p className="language">Язык: {book.volumeInfo.language}</p>
+          </div>
+          <div className="popupCard__footer">
+            <p className="pageCount">
+              Количество страниц: {book.volumeInfo.pageCount}
+            </p>
+            <p className="publishedDate">
+              Дата публикации: {book.volumeInfo.publishedDate}
+            </p>
+            <p className="publisher">
+              Издательство: {book.volumeInfo.publisher}
+            </p>
+          </div>
         </div>
       </Popup>
       <article
@@ -73,7 +71,14 @@ const Card = ({ book }) => {
         className="card cardWidth"
         onClick={() => setPopupActive(true)}
       >
-        <img src={thumbnail} alt="#" className="card-img-top" />
+        <img
+          src={
+            imgImg ||
+            "https://books.google.ru/googlebooks/images/no_cover_thumb.gif"
+          }
+          alt="#"
+          className="card-img-top"
+        />
 
         <div className="card__body">
           <h5 className="card__title">{title}</h5>
@@ -84,7 +89,7 @@ const Card = ({ book }) => {
           <p className="authors card-text">
             <small>Категория: {categories}</small>
             <br />
-            <small className="text-muted">Авторы: {`${authors}`}</small>
+            <small className="text-muted authors">Авторы: {`${authors}`}</small>
             <br />
           </p>
         </div>
