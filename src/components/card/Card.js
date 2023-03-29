@@ -14,7 +14,6 @@ const Card = ({ book }) => {
     book.volumeInfo.description !== undefined
       ? book.volumeInfo.description
       : "...";
-  console.log(book.volumeInfo.imageLinks);
   const authors = book.volumeInfo.authors;
   return (
     <>

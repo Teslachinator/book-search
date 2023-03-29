@@ -1,6 +1,6 @@
 import React from "react";
 
-const Header = ({ sSearch, sCategory, sSort, data }) => {
+const Header = ({ sSearch, sCategory, sSort, data, bookCount }) => {
   const propSort = (e) => {
     sSort(e.target.value);
   };
@@ -13,7 +13,7 @@ const Header = ({ sSearch, sCategory, sSort, data }) => {
 
   return (
     <header>
-      <div className="container">
+      <section className="container">
         <h1 className="header__title">Поиск книг</h1>
         <div className="header__search input-group mb-3">
           <input
@@ -55,7 +55,8 @@ const Header = ({ sSearch, sCategory, sSort, data }) => {
             </select>
           </div>
         </div>
-      </div>
+        <p className="header__booksCount">Книг найдено: {bookCount}</p>
+      </section>
     </header>
   );
 };

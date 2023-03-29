@@ -24,8 +24,6 @@ article {
   max-height: 300px;
 }
 
-.card {
-}
 .card__body {
   margin-top: 20px;
   display: flex;
@@ -90,6 +88,4 @@ article {
   max-height: 200px;
   overflow: auto;
   font-family: "Noto Sans", sans-serif;
-}
-.popupCard-img {
 }
