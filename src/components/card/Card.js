@@ -70,14 +70,16 @@ const Card = ({ book }) => {
         className="card cardWidth"
         onClick={() => setPopupActive(true)}
       >
-        <img
-          src={
-            imgImg ||
-            "https://books.google.ru/googlebooks/images/no_cover_thumb.gif"
-          }
-          alt="#"
-          className="card-img-top"
-        />
+        <div>
+          <img
+            src={
+              imgImg ||
+              "https://books.google.ru/googlebooks/images/no_cover_thumb.gif"
+            }
+            alt="#"
+            className="card-img-top"
+          />
+        </div>
 
         <div className="card__body">
           <h5 className="card__title">{title}</h5>

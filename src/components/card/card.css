@@ -10,18 +10,13 @@ article {
 }
 .cardWidth {
   display: flex;
-  /* flex-direction: row; */
   min-width: 300px;
   max-width: 20%;
 }
 
 .description {
-  max-height: 500px;
   overflow: hidden;
   margin: 0;
-}
-.card-img-top {
-  max-height: 300px;
 }
 
 .card__body {
@@ -62,6 +57,9 @@ article {
   flex-direction: column;
   place-items: center;
 }
+.popupCard-img {
+  width: calc(128 * 1.5px);
+}
 .popupCard__close:hover,
 .popupCard__close:active {
   background: #00000010;
@@ -75,17 +73,33 @@ article {
   margin-left: auto;
 }
 .popupCard__header {
-  width: 100%;
+  width: 80%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  text-align: center;
+  text-align: left;
   gap: 20px;
   font-family: "Russo One", sans-serif;
 }
 .popupCard__main {
-  max-width: 1000px;
+  max-width: 80%;
   max-height: 200px;
   overflow: auto;
   font-family: "Noto Sans", sans-serif;
+}
+.cardWidth img {
+  max-width: 128px;
+  max-height: 160px;
+}
+
+@media (max-width: 768px) {
+  .popup {
+    max-height: 95vh;
+    overflow: scroll;
+  }
+  .popupCard__header,
+  .popupCard__footer {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
 }

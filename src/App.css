@@ -77,6 +77,6 @@ p.page-link {
   align-items: center;
   font-size: x-large;
 }
-/* nav {
-  margin: 30px 0;
-} */
+.pagesCount {
+  transition-duration: 13s;
+}

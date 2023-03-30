@@ -79,7 +79,7 @@ function App() {
               </button>
             </li>
             <li className="page-item">
-              <p className="page-link">{pagesCount}</p>
+              <p className="page-link pagesCount">{pagesCount}</p>
             </li>
             <li className="page-item">
               <button

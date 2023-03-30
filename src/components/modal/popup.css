@@ -1,4 +1,5 @@
-.popup_bg {
+.popup_bg,
+.popup_bgActive {
   height: 100vh;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.803);
@@ -12,22 +13,23 @@
   pointer-events: none;
   transition: 0.5s;
 }
-.popup_bg.popActive {
+.popup_bgActive {
   opacity: 1;
   z-index: 8;
   pointer-events: all;
 }
 
-.popup {
+.popup,
+.popupActive {
   background: white;
   padding: 15px;
   border-radius: 15px;
   width: 90%;
   height: max-content;
-  transform: scale(0.5);
+  transform: scale(0.3);
   transition: 0.4s all;
   z-index: 9;
 }
-.popup.popActive {
+.popupActive {
   transform: scale(1);
 }
