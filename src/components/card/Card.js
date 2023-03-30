@@ -49,9 +49,7 @@ const Card = ({ book }) => {
             </div>
           </div>
           <p className="line"></p>
-          <div className="popupCard__main">
-            <p className="description">{description}</p>
-          </div>
+          <p className="description">{description}</p>
           <div className="popupCard__footer">
             <p className="pageCount">
               Количество страниц: {book.volumeInfo.pageCount}
