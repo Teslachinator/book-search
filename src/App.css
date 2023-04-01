@@ -5,6 +5,16 @@
   margin: 0 auto;
   text-align: center;
 }
+.none {
+  display: none;
+}
+.container-fluid {
+  padding: 24px 0;
+}
+.unknow {
+  font-family: "Russo One", sans-serif;
+  font-size: x-large;
+}
 header {
   width: 100%;
   background: linear-gradient(90deg, #d44789 0%, #0d70a9 100%);

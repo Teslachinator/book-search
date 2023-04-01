@@ -13,17 +13,17 @@ function App() {
   const [books, setBooks] = useState([]);
   const [bookCount, setbookCount] = useState();
   const [pagesCount, setPagesCount] = useState(1);
+  console.log(bookCount);
   useEffect(() => {
     setPagesCount(1);
   }, [search, sort, category]);
-
+  let requestS;
+  if (search === "") {
+    requestS = "q=";
+  } else {
+    requestS = `q=${search}+intitle:${search}+${category}`;
+  }
   const getSearchData = () => {
-    let requestS;
-    if (search === "") {
-      requestS = "q=";
-    } else {
-      requestS = `q=${search}+intitle:${search}+${category}`;
-    }
     axios
       .get(
         `${BASE_URL}${requestS}&orderBy=${sort}&startIndex=${
@@ -39,9 +39,22 @@ function App() {
       })
       .catch((err) => console.log(err));
   };
+  const getPagesData = () => {
+    axios
+      .get(
+        `${BASE_URL}${requestS}&orderBy=${sort}&startIndex=${
+          (pagesCount - 1) * 40
+        }&maxResults=40&langRestrict=ru&key=${API_KEY}`
+      )
+      .then((res) => {
+        setBooks(res.data.items);
+      })
+      .catch((err) => console.log(err));
+  };
   console.log(
     pagesCount,
     books,
+
     `${BASE_URL}q=${search}+intitle:${search}+${category}&orderBy=${sort}&startIndex=${
       (pagesCount - 1) * 40
     }&maxResults=40&langRestrict=ru&key=${API_KEY}`
@@ -52,7 +65,7 @@ function App() {
   const sSearch = (e) => setSearch(e);
 
   useEffect(() => {
-    getSearchData();
+    getPagesData();
   }, [pagesCount]);
 
   return (
@@ -65,8 +78,13 @@ function App() {
         bookCount={bookCount}
       />
       <main className="container-fluid">
-        <nav aria-label="Page navigation example">
-          <ul className="pagination m-4 justify-content-center">
+        <nav
+          className={
+            bookCount === undefined || bookCount <= 40 ? "none" : "block"
+          }
+          aria-label="Page navigation"
+        >
+          <ul className="pagination mb-4 justify-content-center">
             <li className="page-item">
               <button
                 className="page-link"
@@ -101,7 +119,7 @@ function App() {
               return <Card book={book} />;
             })
           ) : (
-            <p>Список книг пуст</p>
+            <p className="unknow">Список книг пуст</p>
           )}
         </section>
       </main>
